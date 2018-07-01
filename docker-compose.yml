@@ -7,7 +7,8 @@ services:
       - 13306:3306
     volumes:
       - ./docker/db/initdb.d/:/docker-entrypoint-initdb.d
-      - mariadb_data:/var/lib/mysql
+      - ./docker/db/mariadb:/var/lib/mysql
+      - ./docker/db/mariadb:/bitnami
     environment:
       - MARIADB_USER=${MARIADB_USER}
       - MARIADB_PASSWORD=${MARIADB_PASSWORD}
@@ -45,9 +46,3 @@ services:
         - ./httpdocs:/var/www/localhost/htdocs
     depends_on:
       - mariadb
-
-volumes:
-  mariadb_data:
-    driver: local
-  wordpress_data:
-    driver: local
