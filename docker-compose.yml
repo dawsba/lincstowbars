@@ -3,6 +3,7 @@ version: '2'
 services:
   mariadb:
     image: 'bitnami/mariadb:latest'
+    user: root
     ports:
       - 13306:3306
     volumes:
